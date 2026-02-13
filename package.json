@@ -1,0 +1,24 @@
+{
+  "name": "google-form-lite-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsieievKostiantyn/Test-Task-Google-Forms-Lite-Clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AsieievKostiantyn/Test-Task-Google-Forms-Lite-Clone/issues"
+  },
+  "homepage": "https://github.com/AsieievKostiantyn/Test-Task-Google-Forms-Lite-Clone#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
