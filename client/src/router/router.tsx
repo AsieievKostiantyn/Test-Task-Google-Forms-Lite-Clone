@@ -5,13 +5,7 @@ import {
   FormResponsesPage,
   HomePage,
 } from "../pages";
-
-const ROUTES = {
-  HOME_PAGE: "/",
-  FORM_BUILDER: "/forms/new",
-  FORM_FILL: "/forms/:id/fill",
-  FORM_RESPONSES: "./forms/:id/responses",
-} as const;
+import { ROUTES } from "./routes";
 
 const routes = [
   {

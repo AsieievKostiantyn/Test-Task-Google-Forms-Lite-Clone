@@ -1,8 +1,30 @@
 import { useFormsShortViewQuery } from "../../app/api/generatedApi";
+import { CreateNewFormButton, FormList } from "./components";
 
 export const HomePage = () => {
-  const formsQuery = useFormsShortViewQuery();
-  console.log(formsQuery.data?.forms);
+  const { data, isLoading, isError } = useFormsShortViewQuery();
 
-  return <>HomePage</>;
+  let formsContent: React.ReactNode;
+
+  if (isLoading) {
+    formsContent = <p>Loading forms...</p>;
+  } else if (isError) {
+    formsContent = <p>Failed to load forms</p>;
+  } else if (data) {
+    formsContent = <FormList forms={data.forms} />;
+  } else {
+    formsContent = null;
+  }
+
+  return (
+    <div>
+      <h1>HomePage</h1>
+      <CreateNewFormButton />
+
+      <section>
+        <h2>Form list</h2>
+        {formsContent}
+      </section>
+    </div>
+  );
 };
