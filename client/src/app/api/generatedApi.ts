@@ -107,32 +107,39 @@ export type Response = {
   id: Scalars["ID"]["output"];
 };
 
-export type ExampleQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type FormsShortViewQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ExampleQueryQuery = {
+export type FormsShortViewQuery = {
   __typename?: "Query";
-  forms: Array<{ __typename?: "Form"; id: string }>;
+  forms: Array<{
+    __typename?: "Form";
+    id: string;
+    description?: string | null;
+    title: string;
+  }>;
 };
 
-export const ExampleQueryDocument = `
-    query ExampleQuery {
+export const FormsShortViewDocument = `
+    query FormsShortView {
   forms {
     id
+    description
+    title
   }
 }
     `;
 
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
-    ExampleQuery: build.query<
-      ExampleQueryQuery,
-      ExampleQueryQueryVariables | void
+    FormsShortView: build.query<
+      FormsShortViewQuery,
+      FormsShortViewQueryVariables | void
     >({
-      query: (variables) => ({ document: ExampleQueryDocument, variables }),
+      query: (variables) => ({ document: FormsShortViewDocument, variables }),
     }),
   }),
 });
 
 export { injectedRtkApi as api };
-export const { useExampleQueryQuery, useLazyExampleQueryQuery } =
+export const { useFormsShortViewQuery, useLazyFormsShortViewQuery } =
   injectedRtkApi;
