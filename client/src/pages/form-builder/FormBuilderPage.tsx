@@ -1,14 +1,39 @@
+import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/store";
 import {
+  deleteQuestion,
   setFormDescription,
   setFormTitle,
 } from "../../app/store/slices/formBuilderSlice";
+import { QuestionModal } from "./components/QuestionModal";
+import { type Question } from "../../app/api/generatedApi";
+import { CreateFormButton } from "./components/CreateFormButton";
 
 export const FormBuilderPage = () => {
+  const dispatch = useAppDispatch();
   const { title, description, questions } = useAppSelector(
     (s) => s.formBuilder,
   );
-  const dispatch = useAppDispatch();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [editingQuestion, setEditingQuestion] = useState<
+    Question | undefined
+  >();
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleEditQuestion = (question: Question) => {
+    setEditingQuestion(question);
+    setIsModalOpen(true);
+  };
+
+  const handleAddQuestion = () => {
+    setEditingQuestion(undefined);
+    setIsModalOpen(true);
+  };
 
   return (
     <div
@@ -38,11 +63,18 @@ export const FormBuilderPage = () => {
       {questions.map((question) => (
         <div key={question.id}>
           {question.title}
-          <button>edit</button>
-          <button>delete</button>
+          <button onClick={() => handleEditQuestion(question)}>edit</button>
+          <button onClick={() => dispatch(deleteQuestion(question.id))}>
+            delete
+          </button>
         </div>
       ))}
-      <button>Add question</button>
+      <button onClick={handleAddQuestion}>Add question</button>
+      {isModalOpen && (
+        <QuestionModal closeModal={closeModal} question={editingQuestion} />
+      )}
+
+      <CreateFormButton />
     </div>
   );
 };

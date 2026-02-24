@@ -1,4 +1,4 @@
-import { useFormsShortViewQuery } from "../../app/api/generatedApi";
+import { useFormsShortViewQuery } from "../../app/api/enhancedApi";
 import { CreateNewFormButton, FormList } from "./components";
 
 export const HomePage = () => {

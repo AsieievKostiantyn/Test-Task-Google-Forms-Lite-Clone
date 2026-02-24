@@ -38,11 +38,22 @@ const formBuilderSlice = createSlice({
       state.questions[index] = action.payload;
     },
     deleteQuestion: (state, action: PayloadAction<string>) => {
-      state.questions.filter((question) => question.id !== action.payload);
+      state.questions = state.questions.filter(
+        (question) => question.id !== action.payload,
+      );
     },
+
+    resetBuilder: () => initialState,
   },
 });
 
-export const { setFormTitle, setFormDescription } = formBuilderSlice.actions;
+export const {
+  setFormTitle,
+  setFormDescription,
+  addQuestion,
+  updateQuestion,
+  deleteQuestion,
+  resetBuilder,
+} = formBuilderSlice.actions;
 
 export const formBuilderReducer = formBuilderSlice.reducer;
