@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { api } from "../api/baseApi";
 import { useDispatch, useSelector } from "react-redux";
 import { formBuilderReducer } from "./slices/formBuilderSlice";
+import { formFillReducer } from "./slices/formFillSlice";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     formBuilder: formBuilderReducer,
+    formFill: formFillReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

@@ -1,6 +1,6 @@
-import { injectedRtkApi } from "./generatedApi";
+import { api } from "./generatedApi";
 
-export const enhancedApi = injectedRtkApi.enhanceEndpoints({
+export const enhancedApi = api.enhanceEndpoints({
   addTagTypes: ["forms"],
   endpoints: {
     FormsShortView: {
@@ -12,9 +12,11 @@ export const enhancedApi = injectedRtkApi.enhanceEndpoints({
   },
 });
 
-export { enhancedApi as api };
 export const {
   useCreateFormMutation,
   useFormsShortViewQuery,
   useLazyFormsShortViewQuery,
+  useFormByIdQuery,
+  useLazyFormByIdQuery,
+  useSubmitResponseMutation,
 } = enhancedApi;

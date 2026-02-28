@@ -11,7 +11,6 @@ const config: CodegenConfig = {
         {
           "typescript-rtk-query": {
             importBaseApiFrom: "./baseApi",
-            exportHooks: true,
           },
         },
       ],

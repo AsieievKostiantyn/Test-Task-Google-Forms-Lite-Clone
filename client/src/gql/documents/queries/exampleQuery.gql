@@ -1,7 +1,0 @@
-query FormsShortView {
-  forms {
-    id
-    description
-    title
-  }
-}

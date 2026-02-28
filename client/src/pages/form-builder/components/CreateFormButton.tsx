@@ -15,14 +15,18 @@ export const CreateFormButton = () => {
   const [createForm, { isLoading }] = useCreateFormMutation();
 
   const handleCreateForm = async () => {
-    await createForm({
-      title,
-      description,
-      questions: mapQuestionsToInput(questions),
-    });
+    try {
+      await createForm({
+        title,
+        description,
+        questions: mapQuestionsToInput(questions),
+      }).unwrap();
 
-    dispatch(resetBuilder());
-    navigate(ROUTES.HOME_PAGE);
+      dispatch(resetBuilder());
+      navigate(ROUTES.HOME_PAGE);
+    } catch {
+      alert("Something went wrong");
+    }
   };
 
   return (

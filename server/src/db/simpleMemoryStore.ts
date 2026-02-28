@@ -12,13 +12,13 @@ export const forms = [
       {
         id: "q-2",
         title: "Which framework do you use the most?",
-        type: "CHECKBOX",
+        type: "MULTIPLE_CHOICE",
         options: ["React", "Vue", "Angular", "Svelte"],
       },
       {
         id: "q-3",
         title: "Which technologies have you worked with?",
-        type: "MULTIPLE_CHOICE",
+        type: "CHECKBOX",
         options: ["TypeScript", "Redux", "GraphQL", "Node.js"],
       },
       {

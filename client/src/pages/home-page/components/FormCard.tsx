@@ -12,8 +12,8 @@ export const FormCard = ({ form }: FormCardProps) => {
       <h2>{form.title}</h2>
       <p>{form.description || "None"}</p>
       <div>
-        <Link to={href(ROUTES.FORM_FILL, { id: form.id })}>View Form</Link>
-        <Link to={href(ROUTES.FORM_RESPONSES, { id: form.id })}>
+        <Link to={href(ROUTES.FORM_FILL, { formId: form.id })}>View Form</Link>
+        <Link to={href(ROUTES.FORM_RESPONSES, { formId: form.id })}>
           View Responses
         </Link>
       </div>
