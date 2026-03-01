@@ -127,6 +127,13 @@ export type FormByIdQueryVariables = Exact<{
 
 export type FormByIdQuery = { __typename?: 'Query', form?: { __typename?: 'Form', id: string, title: string, description?: string | null, questions: Array<{ __typename?: 'Question', id: string, title: string, type: QuestionType, options?: Array<string> | null }> } | null };
 
+export type FormWithResponsesQueryVariables = Exact<{
+  formId: Scalars['ID']['input'];
+}>;
+
+
+export type FormWithResponsesQuery = { __typename?: 'Query', form?: { __typename?: 'Form', id: string, title: string, description?: string | null, questions: Array<{ __typename?: 'Question', id: string, title: string, type: QuestionType, options?: Array<string> | null }> } | null, responses: Array<{ __typename?: 'Response', id: string, answers: Array<{ __typename?: 'Answer', questionId: string, value: string }> }> };
+
 
 export const CreateFormDocument = `
     mutation CreateForm($title: String!, $description: String, $questions: [QuestionInput!]) {
@@ -166,6 +173,28 @@ export const FormByIdDocument = `
   }
 }
     `;
+export const FormWithResponsesDocument = `
+    query FormWithResponses($formId: ID!) {
+  form(id: $formId) {
+    id
+    title
+    description
+    questions {
+      id
+      title
+      type
+      options
+    }
+  }
+  responses(formId: $formId) {
+    id
+    answers {
+      questionId
+      value
+    }
+  }
+}
+    `;
 
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -180,6 +209,9 @@ const injectedRtkApi = api.injectEndpoints({
     }),
     FormById: build.query<FormByIdQuery, FormByIdQueryVariables>({
       query: (variables) => ({ document: FormByIdDocument, variables })
+    }),
+    FormWithResponses: build.query<FormWithResponsesQuery, FormWithResponsesQueryVariables>({
+      query: (variables) => ({ document: FormWithResponsesDocument, variables })
     }),
   }),
 });

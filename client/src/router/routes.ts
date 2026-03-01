@@ -3,4 +3,5 @@ export const ROUTES = {
   FORM_BUILDER: "/forms/new",
   FORM_FILL: "/forms/:formId/fill",
   FORM_RESPONSES: "/forms/:formId/responses",
+  FORM_RESPONSE_DETAILS: "/forms/:formId/responses/:responseId",
 } as const;

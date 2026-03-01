@@ -1,0 +1,21 @@
+query FormWithResponses($formId: ID!) {
+  form(id: $formId) {
+    id
+    title
+    description
+    questions {
+      id
+      title
+      type
+      options
+    }
+  }
+
+  responses(formId: $formId) {
+    id
+    answers {
+      questionId
+      value
+    }
+  }
+}

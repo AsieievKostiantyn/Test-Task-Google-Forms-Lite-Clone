@@ -6,8 +6,14 @@ export const enhancedApi = api.enhanceEndpoints({
     FormsShortView: {
       providesTags: ["forms"],
     },
+    FormWithResponses: {
+      providesTags: ["responses"],
+    },
     CreateForm: {
       invalidatesTags: ["forms"],
+    },
+    SubmitResponse: {
+      invalidatesTags: ["responses"],
     },
   },
 });
@@ -19,4 +25,6 @@ export const {
   useFormByIdQuery,
   useLazyFormByIdQuery,
   useSubmitResponseMutation,
+  useFormWithResponsesQuery,
+  useLazyFormWithResponsesQuery,
 } = enhancedApi;

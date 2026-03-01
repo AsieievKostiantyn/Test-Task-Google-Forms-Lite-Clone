@@ -6,6 +6,7 @@ import {
   HomePage,
 } from "../pages";
 import { ROUTES } from "./routes";
+import { ResponseDetails } from "../pages/form-responses/components/ResponseDetails";
 
 const routes = [
   {
@@ -23,6 +24,12 @@ const routes = [
   {
     path: ROUTES.FORM_RESPONSES,
     element: <FormResponsesPage />,
+    children: [
+      {
+        path: ROUTES.FORM_RESPONSE_DETAILS,
+        element: <ResponseDetails />,
+      },
+    ],
   },
   { path: "*", element: <Navigate to={ROUTES.HOME_PAGE} replace /> },
 ];
